@@ -1,7 +1,7 @@
-import { getStats } from "../../Pages/WeatherInfo.helper";
-import Section from "../../shared/components/Section";
-import Text from "../../shared/components/Text";
-import type { Current } from "../../utils/models/weather";
+import { getStats } from "@ui/Pages/WeatherInfo.helper";
+import Section from "@shared/components/Section";
+import Text from "@shared/components/Text";
+import type { Current } from "@utils/models/weather";
 
 interface Props {
 	currentWeather: Current;

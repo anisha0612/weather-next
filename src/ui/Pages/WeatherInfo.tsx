@@ -1,13 +1,19 @@
 import Loader from "@shared/components/Loader";
-import type { Alert, ForecastDay } from '@utils/models/weather';
+import type { Alert, ForecastDay } from "@utils/models/weather";
 import Text from "@shared/components/Text";
 import WeatherAlert from "@ui/layout/weather/WeatherAlert";
 import Section from "@shared/components/Section";
 import WeatherIcon from "@shared/components/WeatherIcon";
 import Forecast from "@ui/layout/weather/Forecast";
-import { getCurrentBadge, getCurrentDescription, getCurrentIcon, getCurrentTemperature, useWeatherLocation } from "./WeatherInfo.helper";
-import { currentWeatherStore, locationStore } from "@/src/store/weather.store";
-import TodaysStats from "../layout/weather/TodaysStats";
+import {
+	getCurrentBadge,
+	getCurrentDescription,
+	getCurrentIcon,
+	getCurrentTemperature,
+	useWeatherLocation,
+} from "./WeatherInfo.helper";
+import { currentWeatherStore, locationStore } from "@store/weather.store";
+import TodaysStats from "@ui/layout/weather/TodaysStats";
 
 interface Props {
 	alert: Alert[];
@@ -16,14 +22,9 @@ interface Props {
 	forecastDays: ForecastDay[]; // Replace with actual type
 }
 
-function WeatherInfo({
-	alert,
-	loading,
-	error,
-	...props
-}: Props) {
-		const currentWeather = currentWeatherStore((state) => state.current);
-		const location = locationStore((state) => state.location);
+function WeatherInfo({ alert, loading, error, ...props }: Props) {
+	const currentWeather = currentWeatherStore((state) => state.current);
+	const location = locationStore((state) => state.location);
 	const currentIcon = getCurrentIcon(currentWeather);
 	const currentDescription = getCurrentDescription(currentWeather);
 	const currentTemperature = getCurrentTemperature(currentWeather);
@@ -91,10 +92,10 @@ function WeatherInfo({
 										>
 											°F
 										</Text>
-										
 									</div>
 									<Text className="mt-2 text-base text-sky-300 font-bold">
-										<span className="text-base">Feels like</span> {feelsLike} <span className="text-base">°F</span>
+										<span className="text-base">Feels like</span> {feelsLike}{" "}
+										<span className="text-base">°F</span>
 									</Text>
 									<Text size="lg" className="mt-2 text-white/55 sm:text-xl">
 										{currentDescription}

@@ -1,5 +1,4 @@
-import { useMemo } from "react";
-import { iconDisplay, resolveWeatherIconSrc } from "../../utils/weatherIcons";
+import { iconDisplay } from "@utils/weatherIcons";
 import type { Current } from "@utils/models/weather";
 
 export function getCurrentBadge(currentWeather: Current | null) {

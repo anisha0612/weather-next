@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/performance/noImgElement: <explanation> */
 import type React from "react";
-import { resolveWeatherIconSrc } from "../../../utils/weatherIcons";
+import { resolveWeatherIconSrc } from "@utils/weatherIcons";
 
 type WeatherIconProps = {
 	icon?: string;

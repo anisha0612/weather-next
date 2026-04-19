@@ -1,7 +1,7 @@
 import type React from "react";
-import Text from "../../shared/components/Text";
-import WeatherIcon from "../../shared/components/WeatherIcon";
-import type { ForecastDay } from "../../utils/models/weather";
+import Text from "@shared/components/Text";
+import WeatherIcon from "@shared/components/WeatherIcon";
+import type { ForecastDay } from "@utils/models/weather";
 
 type ForecastCardProps = {
 	day: ForecastDay;

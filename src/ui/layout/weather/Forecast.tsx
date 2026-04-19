@@ -1,7 +1,7 @@
 import { forecastLabel } from "../../Pages/WeatherInfo.helper";
 import Section from "../../shared/components/Section";
 import Text from "../../shared/components/Text";
-import type { ForecastDay } from "../../utils/models/weather";
+import type { ForecastDay } from "@utils/models/weather";
 import ForecastCard from "./ForecastCard";
 
 interface Props {

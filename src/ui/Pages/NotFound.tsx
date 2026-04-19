@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import type React from "react";
 import Header from "../shared/Header/Header";
 
@@ -35,7 +35,7 @@ const NotFound: React.FC = () => {
 
 						<div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 							<Link
-								to="/"
+								href="/not-found"
 								className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f4d86b] px-6 py-3 text-sm font-semibold text-[#332b0d] shadow-[0_10px_30px_rgba(244,216,107,0.15)] transition-transform hover:-translate-y-0.5"
 							>
 								Return Home
