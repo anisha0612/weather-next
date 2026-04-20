@@ -1,26 +1,30 @@
-// import React from "react";
-// import { useGeolocationWeather } from '
-// import Forecast from "../layout/weather/Forecast";
-// import ForecastCard from "../layout/weather/ForecastCard";
-// import WeatherAlert from "../layout/weather/WeatherAlert";
-// import Alert from "../shared/components/Alert";
-// import Loader from "../shared/components/Loader";
-// import Section from "../shared/components/Section";
-// import Text from "../shared/components/Text";
-// import WeatherIcon from "../shared/components/WeatherIcon";
-// import Header from "../shared/Header/Header";
-// import { currentWeatherStore, locationStore } from "../store/weather.store";
 'use client';
 
+import Link from "next/link";
 import { useWeather } from "@hooks/useWeather";
 import { useGeolocationWeather } from "@hooks/useGeolocationWeather";
-import {  searchQueryStore } from "@store/weather.store";
+import { searchQueryStore } from "@store/weather.store";
 import WeatherInfo from "./WeatherInfo";
 
 function HomePage() {
     useGeolocationWeather();
     const query = searchQueryStore((state) => state.query);
     const { alert, error, forecastDays, loading } = useWeather({ query: query ?? "" });
+
+    if (query === "") {
+        return (
+            <div className="flex min-h-screen flex-col items-center justify-center bg-[#0b0f17] text-white">
+                <p className="mb-2 text-xl font-semibold">Location access was denied</p>
+                <p className="mb-6 text-slate-400">We need your location to show weather data.</p>
+                <Link
+                    href="/search"
+                    className="rounded-xl bg-slate-700 px-6 py-3 text-white transition-colors hover:bg-slate-600"
+                >
+                    Search for a location
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-[#0b0f17] text-white">
