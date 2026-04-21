@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Current, ForecastDay, Location } from "../utils/models/weather";
+import type { Alert, Current, ForecastDay, Location } from "../utils/models/weather";
 
 interface WeatherStore {
 	current: Current | null;
@@ -17,6 +17,12 @@ interface SearchQueryStore {
 	query: string | null;
 	setQuery: (query: string) => void;
 }
+interface AlertStore {
+	alert: Alert[] | null;
+	singleAlert: Alert | null;
+	setAlert: (alert: Alert[]) => void;
+	setSingleAlert: (alert: Alert) => void;
+}
 
 export const currentWeatherStore = create<WeatherStore>((set) => ({
 	current: null,
@@ -33,15 +39,14 @@ export const forecastDayStore = create<ForecastDayStore>((set) => ({
 	setForecastDay: (forecastDay: ForecastDay) => set({ forecastDay }),
 }));
 
-export const searchQueryStore = create<SearchQueryStore>((set) => ({
+export const searchQueryStore = create<SearchQueryStore>((set: (arg0: { query: string; }) => any) => ({
 	query: null,
 	setQuery: (query: string) => set({ query }),
 }));
 
-export const alertStore = create<{
-	alert: string | null;
-	setAlert: (alert: string) => void;
-}>((set) => ({
+export const alertStore = create<AlertStore>((set: (arg0: { alert?: Alert[] | null; singleAlert?: Alert | null }) => void) => ({
 	alert: null,
-	setAlert: (alert: string) => set({ alert }),
+	singleAlert: null,
+	setAlert: (alert: Alert[]) => set({ alert }),
+	setSingleAlert: (alert: Alert) => set({ singleAlert: alert }),
 }));

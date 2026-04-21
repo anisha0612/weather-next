@@ -82,7 +82,7 @@ const Banner: React.FC<BannerProps> = ({
 				>
 					{title}
 				</Text>
-				<Text size="sm" className={`mt-1 ${styles.description}`}>
+				<Text size="xs" className={`mt-1 ${styles.description}`}>
 					{description}
 				</Text>
 			</div>

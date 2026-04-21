@@ -33,8 +33,6 @@ export function useWeather({ query }: Props): { alert: Alert | null; error: stri
 	});
 
 	useEffect(() => {
-		console.log("Forecast query data:", forecastQuery.data);
-		console.log("Alerts query data:", alertsQuery.data);
 		if (forecastQuery.data) {
 			setLocation(forecastQuery.data.location);
 			setCurrent(forecastQuery.data.current);
@@ -43,7 +41,7 @@ export function useWeather({ query }: Props): { alert: Alert | null; error: stri
 	}, [forecastQuery.data, alertsQuery.data, setCurrent, setForecastDay, setLocation]);
 
 	const forecastDays = forecastQuery.data?.forecast?.forecastday ?? [];
-	const alert = alertsQuery.data?.alert?.alert ?? null;
+	const alert = alertsQuery.data?.alerts?.alert ?? null;
 	const loading = !!query && forecastQuery.isLoading;
 	const storeError =
 		query && !forecastQuery.isLoading && !forecastQuery.data

@@ -13,7 +13,7 @@ export function useGeolocationWeather() {
 
 		navigator.geolocation.getCurrentPosition(
 			(position) => {
-				console.log("Geolocation obtained:", position);
+				console.log("Geolocation obtained:");
 				setQuery(`${position.coords.latitude},${position.coords.longitude}`);
 			},
 			() => {

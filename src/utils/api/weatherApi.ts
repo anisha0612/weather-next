@@ -1,6 +1,6 @@
 export const fetchForecast = async (location: string) => {
     const url = `/api/forecast?location=${encodeURIComponent(location)}`;
-    console.log('Fetching forecast with URL:', url);
+
 
     const response = await fetch(url);
 

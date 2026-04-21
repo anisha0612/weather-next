@@ -16,7 +16,7 @@ import { currentWeatherStore, locationStore } from "@store/weather.store";
 import TodaysStats from "@ui/layout/weather/TodaysStats";
 
 interface Props {
-	alert: Alert[];
+	alert: Alert[] | [];
 	loading: boolean;
 	error: string | null;
 	forecastDays: ForecastDay[]; // Replace with actual type
@@ -33,7 +33,7 @@ function WeatherInfo({ alert, loading, error, ...props }: Props) {
 	const feelsLike = currentWeather?.feelslike_f?.toFixed(0) ?? "--";
 
 	return (
-		<main className="mx-auto w-full max-w-6xl rounded-[32px] border border-white/5 bg-[radial-gradient(circle_at_top,_rgba(90,102,255,0.08),_transparent_35%),linear-gradient(180deg,_rgba(11,15,23,0.98),_rgba(9,12,18,0.98))] px-4 py-6 shadow-[0_40px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-6 lg:px-8">
+		<main className="mx-auto w-full max-w-6xl rounded-4xl border border-white/5 bg-[radial-gradient(circle_at_top,_rgba(90,102,255,0.08),_transparent_35%),linear-gradient(180deg,_rgba(11,15,23,0.98),_rgba(9,12,18,0.98))] px-4 py-6 shadow-[0_40px_120px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-6 lg:px-8">
 			<Loader isLoading={loading}>
 				{!loading && error && (
 					<Text as="div" size="lg" className="py-24 text-center text-white/70">

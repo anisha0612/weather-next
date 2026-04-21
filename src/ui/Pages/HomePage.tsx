@@ -11,6 +11,8 @@ function HomePage() {
     const query = searchQueryStore((state) => state.query);
     const { alert, error, forecastDays, loading } = useWeather({ query: query ?? "" });
 
+    const alertArray = Array.isArray(alert) ? alert : alert ? [alert] : [];
+
     if (query === "") {
         return (
             <div className="flex min-h-screen flex-col items-center justify-center bg-[#0b0f17] text-white">
@@ -30,7 +32,7 @@ function HomePage() {
         <div className="min-h-screen bg-[#0b0f17] text-white">
             <div className="px-4 py-6 sm:px-6 lg:px-8">
                 <WeatherInfo
-                    alert={alert ? [alert] : []}
+                    alert={alertArray}
                     error={error}
                     forecastDays={forecastDays}
                     loading={loading}
